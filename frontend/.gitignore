@@ -1,0 +1,69 @@
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node.js
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+traffic_env/
+
+# AI model weights and datasets
+data/models/
+data/test_videos/
+data/snapshots/
+*.pt
+*.pth
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Backup files
+*.bak
+
+# AI model and datasets
+data/models/
+data/snapshots/
+data/test_videos/
+
+# Local database
+data/*.db
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Backup files
+*.bak
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+

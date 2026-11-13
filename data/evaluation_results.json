@@ -1,0 +1,539 @@
+{
+  "timestamp_utc": "2026-10-22T15:45:07Z",
+  "annotation_source": "E:/Ai-based traffic management/data/test_annotations.json",
+  "model_path": "E:/Ai-based traffic management/data/models/accident_yolov8m.pt",
+  "pipeline_config": {
+    "sample_fps": 5.0,
+    "conf_threshold": 0.35,
+    "imgsz": 480,
+    "temporal_window_sec": 1.5,
+    "temporal_min_hits": 2,
+    "spatial_iou_threshold": 0.05,
+    "max_centroid_dist": 180.0,
+    "save_annotated_video": false
+  },
+  "metrics": {
+    "true_positives": 4,
+    "true_negatives": 1,
+    "false_positives": 1,
+    "false_negatives": 0,
+    "total_evaluated": 6,
+    "accuracy": 0.8333,
+    "precision": 0.8,
+    "recall": 1.0,
+    "f1_score": 0.8889,
+    "error_count": 0
+  },
+  "video_level_metrics": {
+    "true_positives": 4,
+    "true_negatives": 1,
+    "false_positives": 1,
+    "false_negatives": 0,
+    "total_evaluated": 6,
+    "accuracy": 0.8333,
+    "precision": 0.8,
+    "recall": 1.0,
+    "f1_score": 0.8889,
+    "error_count": 0
+  },
+  "event_level_metrics": {
+    "total_ground_truth_events": 4,
+    "total_detected_incidents": 7,
+    "event_true_positives": 3,
+    "event_false_positives": 4,
+    "event_false_negatives": 1,
+    "precision": 0.4286,
+    "recall": 0.75,
+    "f1_score": 0.5455,
+    "per_video_summaries": [
+      {
+        "video_id": "clip_normal_traffic",
+        "gt_events_count": 0,
+        "detected_count": 0,
+        "event_tp": 0,
+        "event_fn": 0,
+        "event_fp": 0
+      },
+      {
+        "video_id": "clip_downtown_intersection",
+        "gt_events_count": 1,
+        "detected_count": 1,
+        "event_tp": 1,
+        "event_fn": 0,
+        "event_fp": 0
+      },
+      {
+        "video_id": "clip_highway_collision",
+        "gt_events_count": 1,
+        "detected_count": 1,
+        "event_tp": 1,
+        "event_fn": 0,
+        "event_fp": 0
+      },
+      {
+        "video_id": "clip_cctv_intersection",
+        "gt_events_count": 1,
+        "detected_count": 2,
+        "event_tp": 1,
+        "event_fn": 0,
+        "event_fp": 1
+      },
+      {
+        "video_id": "clip_boxtruck_bridge_strike",
+        "gt_events_count": 1,
+        "detected_count": 1,
+        "event_tp": 0,
+        "event_fn": 1,
+        "event_fp": 1
+      },
+      {
+        "video_id": "clip_roundabout_contraflow",
+        "gt_events_count": 0,
+        "detected_count": 2,
+        "event_tp": 0,
+        "event_fn": 0,
+        "event_fp": 2
+      }
+    ]
+  },
+  "performance_summary": {
+    "total_sampled_frames": 849,
+    "avg_inference_latency_ms": 538.82
+  },
+  "video_results": [
+    {
+      "id": "clip_normal_traffic",
+      "video_path": "data/test_videos/normal_traffic.mp4",
+      "camera_id": "CAM-NORTH-03",
+      "ground_truth": {
+        "has_accident": false,
+        "expected_incident_count": 0,
+        "ground_truth_events": []
+      },
+      "prediction": {
+        "has_accident": false,
+        "detected_incident_count": 0,
+        "classification": "TN",
+        "detected_incidents": [],
+        "matched_events": []
+      },
+      "benchmark": {
+        "video_duration_sec": 14.0,
+        "total_frames": 700,
+        "sampled_frames": 70,
+        "sample_fps": 5.0,
+        "avg_inference_latency_ms": 899.76,
+        "effective_video_speed_factor": 0.18
+      },
+      "error": null
+    },
+    {
+      "id": "clip_downtown_intersection",
+      "video_path": "data/test_videos/video1.mp4",
+      "camera_id": "CAM-DOWNTOWN-01",
+      "ground_truth": {
+        "has_accident": true,
+        "expected_incident_count": 1,
+        "ground_truth_events": [
+          {
+            "event_id": "GT-EVENT-V1-01",
+            "start_time_sec": 7.4,
+            "end_time_sec": 10.2,
+            "expected_classes": [
+              "car_bike_accident",
+              "car_car_accident"
+            ],
+            "description": "Intersection vehicle-bike collision window"
+          }
+        ]
+      },
+      "prediction": {
+        "has_accident": true,
+        "detected_incident_count": 1,
+        "classification": "TP",
+        "detected_incidents": [
+          {
+            "incident_id": "INC-CAM-DOWNTOWN-01-001",
+            "camera_id": "CAM-DOWNTOWN-01",
+            "start_time_sec": 7.4,
+            "end_time_sec": 10.6,
+            "duration_sec": 3.2,
+            "accident_class": "car_bike_accident",
+            "peak_confidence": 0.8911,
+            "hit_count": 4,
+            "evidence_box": [
+              525,
+              133,
+              607,
+              184
+            ],
+            "is_matched_to_gt": true,
+            "is_false_alarm": false
+          }
+        ],
+        "matched_events": [
+          {
+            "event_id": "GT-EVENT-V1-01",
+            "ground_truth_window": [
+              7.4,
+              10.2
+            ],
+            "expected_classes": [
+              "car_bike_accident",
+              "car_car_accident"
+            ],
+            "is_matched": true,
+            "matched_incident": {
+              "incident_id": "INC-CAM-DOWNTOWN-01-001",
+              "camera_id": "CAM-DOWNTOWN-01",
+              "start_time_sec": 7.4,
+              "end_time_sec": 10.6,
+              "duration_sec": 3.2,
+              "accident_class": "car_bike_accident",
+              "peak_confidence": 0.8911,
+              "hit_count": 4,
+              "evidence_box": [
+                525,
+                133,
+                607,
+                184
+              ],
+              "is_matched_to_gt": true,
+              "is_false_alarm": false
+            }
+          }
+        ]
+      },
+      "benchmark": {
+        "video_duration_sec": 21.16,
+        "total_frames": 529,
+        "sampled_frames": 106,
+        "sample_fps": 5.0,
+        "avg_inference_latency_ms": 732.49,
+        "effective_video_speed_factor": 0.27
+      },
+      "error": null
+    },
+    {
+      "id": "clip_highway_collision",
+      "video_path": "data/test_videos/video2.mp4",
+      "camera_id": "CAM-HIGHWAY-02",
+      "ground_truth": {
+        "has_accident": true,
+        "expected_incident_count": 1,
+        "ground_truth_events": [
+          {
+            "event_id": "GT-EVENT-V2-01",
+            "start_time_sec": 15.0,
+            "end_time_sec": 16.0,
+            "expected_classes": [
+              "car_car_accident"
+            ],
+            "description": "Highway impact event window"
+          }
+        ]
+      },
+      "prediction": {
+        "has_accident": true,
+        "detected_incident_count": 1,
+        "classification": "TP",
+        "detected_incidents": [
+          {
+            "incident_id": "INC-CAM-HIGHWAY-02-001",
+            "camera_id": "CAM-HIGHWAY-02",
+            "start_time_sec": 15.21,
+            "end_time_sec": 15.62,
+            "duration_sec": 0.42,
+            "accident_class": "car_car_accident",
+            "peak_confidence": 0.8423,
+            "hit_count": 3,
+            "evidence_box": [
+              259,
+              110,
+              384,
+              169
+            ],
+            "is_matched_to_gt": true,
+            "is_false_alarm": false
+          }
+        ],
+        "matched_events": [
+          {
+            "event_id": "GT-EVENT-V2-01",
+            "ground_truth_window": [
+              15.0,
+              16.0
+            ],
+            "expected_classes": [
+              "car_car_accident"
+            ],
+            "is_matched": true,
+            "matched_incident": {
+              "incident_id": "INC-CAM-HIGHWAY-02-001",
+              "camera_id": "CAM-HIGHWAY-02",
+              "start_time_sec": 15.21,
+              "end_time_sec": 15.62,
+              "duration_sec": 0.42,
+              "accident_class": "car_car_accident",
+              "peak_confidence": 0.8423,
+              "hit_count": 3,
+              "evidence_box": [
+                259,
+                110,
+                384,
+                169
+              ],
+              "is_matched_to_gt": true,
+              "is_false_alarm": false
+            }
+          }
+        ]
+      },
+      "benchmark": {
+        "video_duration_sec": 31.52,
+        "total_frames": 454,
+        "sampled_frames": 152,
+        "sample_fps": 4.800666666666666,
+        "avg_inference_latency_ms": 115.24,
+        "effective_video_speed_factor": 1.78
+      },
+      "error": null
+    },
+    {
+      "id": "clip_cctv_intersection",
+      "video_path": "data/test_videos/expansion/cctv_intersection_collision.webm",
+      "camera_id": "CAM-CCTV-04",
+      "ground_truth": {
+        "has_accident": true,
+        "expected_incident_count": 1,
+        "ground_truth_events": [
+          {
+            "event_id": "GT-EVENT-V4-01",
+            "start_time_sec": 3.4,
+            "end_time_sec": 6.5,
+            "expected_classes": [
+              "car_bike_accident",
+              "car_person_accident"
+            ],
+            "description": "Intersection vehicle-motorcycle impact and rider ejection window"
+          }
+        ]
+      },
+      "prediction": {
+        "has_accident": true,
+        "detected_incident_count": 2,
+        "classification": "TP",
+        "detected_incidents": [
+          {
+            "incident_id": "INC-CAM-CCTV-04-001",
+            "camera_id": "CAM-CCTV-04",
+            "start_time_sec": 3.2,
+            "end_time_sec": 3.84,
+            "duration_sec": 0.64,
+            "accident_class": "car_car_accident",
+            "peak_confidence": 0.7891,
+            "hit_count": 3,
+            "evidence_box": [
+              423,
+              179,
+              622,
+              305
+            ],
+            "is_matched_to_gt": true,
+            "is_false_alarm": false
+          },
+          {
+            "incident_id": "INC-CAM-CCTV-04-002",
+            "camera_id": "CAM-CCTV-04",
+            "start_time_sec": 7.68,
+            "end_time_sec": 8.48,
+            "duration_sec": 0.8,
+            "accident_class": "car_car_accident",
+            "peak_confidence": 0.7747,
+            "hit_count": 4,
+            "evidence_box": [
+              1322,
+              229,
+              1459,
+              318
+            ],
+            "is_matched_to_gt": false,
+            "is_false_alarm": true
+          }
+        ],
+        "matched_events": [
+          {
+            "event_id": "GT-EVENT-V4-01",
+            "ground_truth_window": [
+              3.4,
+              6.5
+            ],
+            "expected_classes": [
+              "car_bike_accident",
+              "car_person_accident"
+            ],
+            "is_matched": true,
+            "matched_incident": {
+              "incident_id": "INC-CAM-CCTV-04-001",
+              "camera_id": "CAM-CCTV-04",
+              "start_time_sec": 3.2,
+              "end_time_sec": 3.84,
+              "duration_sec": 0.64,
+              "accident_class": "car_car_accident",
+              "peak_confidence": 0.7891,
+              "hit_count": 3,
+              "evidence_box": [
+                423,
+                179,
+                622,
+                305
+              ],
+              "is_matched_to_gt": true,
+              "is_false_alarm": false
+            }
+          }
+        ]
+      },
+      "benchmark": {
+        "video_duration_sec": 14.8,
+        "total_frames": 185,
+        "sampled_frames": 93,
+        "sample_fps": 6.25,
+        "avg_inference_latency_ms": 287.97,
+        "effective_video_speed_factor": 0.53
+      },
+      "error": null
+    },
+    {
+      "id": "clip_boxtruck_bridge_strike",
+      "video_path": "data/test_videos/expansion/boxtruck_bridge_strike.webm",
+      "camera_id": "CAM-BRIDGE-05",
+      "ground_truth": {
+        "has_accident": true,
+        "expected_incident_count": 1,
+        "ground_truth_events": [
+          {
+            "event_id": "GT-EVENT-V5-01",
+            "start_time_sec": 4.4,
+            "end_time_sec": 6.2,
+            "expected_classes": [
+              "car_object_accident"
+            ],
+            "description": "Commercial box truck low-clearance bridge beam impact window"
+          }
+        ]
+      },
+      "prediction": {
+        "has_accident": true,
+        "detected_incident_count": 1,
+        "classification": "TP",
+        "detected_incidents": [
+          {
+            "incident_id": "INC-CAM-BRIDGE-05-001",
+            "camera_id": "CAM-BRIDGE-05",
+            "start_time_sec": 17.62,
+            "end_time_sec": 19.82,
+            "duration_sec": 2.2,
+            "accident_class": "car_car_accident",
+            "peak_confidence": 0.7568,
+            "hit_count": 7,
+            "evidence_box": [
+              614,
+              421,
+              853,
+              570
+            ],
+            "is_matched_to_gt": false,
+            "is_false_alarm": true
+          }
+        ],
+        "matched_events": [
+          {
+            "event_id": "GT-EVENT-V5-01",
+            "ground_truth_window": [
+              4.4,
+              6.2
+            ],
+            "expected_classes": [
+              "car_object_accident"
+            ],
+            "is_matched": false,
+            "matched_incident": null
+          }
+        ]
+      },
+      "benchmark": {
+        "video_duration_sec": 28.03,
+        "total_frames": 840,
+        "sampled_frames": 140,
+        "sample_fps": 4.995004995004995,
+        "avg_inference_latency_ms": 551.99,
+        "effective_video_speed_factor": 0.34
+      },
+      "error": null
+    },
+    {
+      "id": "clip_roundabout_contraflow",
+      "video_path": "data/test_videos/expansion/roundabout_contraflow.ogv",
+      "camera_id": "CAM-ROUNDABOUT-06",
+      "ground_truth": {
+        "has_accident": false,
+        "expected_incident_count": 0,
+        "ground_truth_events": []
+      },
+      "prediction": {
+        "has_accident": true,
+        "detected_incident_count": 2,
+        "classification": "FP",
+        "detected_incidents": [
+          {
+            "incident_id": "INC-CAM-ROUNDABOUT-06-001",
+            "camera_id": "CAM-ROUNDABOUT-06",
+            "start_time_sec": 11.01,
+            "end_time_sec": 11.21,
+            "duration_sec": 0.2,
+            "accident_class": "car_object_accident",
+            "peak_confidence": 0.5439,
+            "hit_count": 2,
+            "evidence_box": [
+              1439,
+              560,
+              1819,
+              797
+            ],
+            "is_matched_to_gt": false,
+            "is_false_alarm": true
+          },
+          {
+            "incident_id": "INC-CAM-ROUNDABOUT-06-002",
+            "camera_id": "CAM-ROUNDABOUT-06",
+            "start_time_sec": 51.25,
+            "end_time_sec": 54.05,
+            "duration_sec": 2.8,
+            "accident_class": "car_car_accident",
+            "peak_confidence": 0.4935,
+            "hit_count": 6,
+            "evidence_box": [
+              994,
+              451,
+              1336,
+              580
+            ],
+            "is_matched_to_gt": false,
+            "is_false_alarm": true
+          }
+        ],
+        "matched_events": []
+      },
+      "benchmark": {
+        "video_duration_sec": 57.49,
+        "total_frames": 1723,
+        "sampled_frames": 288,
+        "sample_fps": 4.995,
+        "avg_inference_latency_ms": 645.47,
+        "effective_video_speed_factor": 0.28
+      },
+      "error": null
+    }
+  ]
+}

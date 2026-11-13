@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "description": "Ground-truth benchmark annotations for AI-Powered Intelligent Traffic Safety & Incident Response System",
+  "videos": [
+    {
+      "id": "clip_normal_traffic",
+      "video_path": "data/test_videos/normal_traffic.mp4",
+      "camera_id": "CAM-NORTH-03",
+      "label": "Clip 3: Normal Traffic Footage (Accident-Free Control)",
+      "clip_type": "negative_control",
+      "has_accident": false,
+      "expected_incident_count": 0,
+      "description": "Accident-free traffic footage for negative-control verification; manually confirmed to contain no collisions.",
+      "ground_truth_events": []
+    },
+    {
+      "id": "clip_downtown_intersection",
+      "video_path": "data/test_videos/video1.mp4",
+      "camera_id": "CAM-DOWNTOWN-01",
+      "label": "Clip 1: Downtown Intersection Accident Footage",
+      "clip_type": "accident_scenario",
+      "has_accident": true,
+      "expected_incident_count": 1,
+      "description": "Urban intersection collision footage with an approximate event window of 7.4-10.2 seconds.",
+      "ground_truth_events": [
+        {
+          "event_id": "GT-EVENT-V1-01",
+          "start_time_sec": 7.4,
+          "end_time_sec": 10.2,
+          "expected_classes": ["car_bike_accident", "car_car_accident"],
+          "description": "Intersection vehicle-bike collision window"
+        }
+      ]
+    },
+    {
+      "id": "clip_highway_collision",
+      "video_path": "data/test_videos/video2.mp4",
+      "camera_id": "CAM-HIGHWAY-02",
+      "label": "Clip 2: Highway Collision Footage",
+      "clip_type": "accident_scenario",
+      "has_accident": true,
+      "expected_incident_count": 1,
+      "description": "Multi-vehicle highway collision footage with an approximate event window of 15.0-16.0 seconds.",
+      "ground_truth_events": [
+        {
+          "event_id": "GT-EVENT-V2-01",
+          "start_time_sec": 15.0,
+          "end_time_sec": 16.0,
+          "expected_classes": ["car_car_accident"],
+          "description": "Highway impact event window"
+        }
+      ]
+    },
+    {
+      "id": "clip_cctv_intersection",
+      "video_path": "data/test_videos/expansion/cctv_intersection_collision.webm",
+      "camera_id": "CAM-CCTV-04",
+      "label": "Clip 4: Municipal CCTV Intersection Collision",
+      "clip_type": "accident_scenario",
+      "has_accident": true,
+      "expected_incident_count": 1,
+      "description": "Municipal CCTV right-angle vehicle-motorcycle collision at intersection with rider ejection.",
+      "ground_truth_events": [
+        {
+          "event_id": "GT-EVENT-V4-01",
+          "start_time_sec": 3.4,
+          "end_time_sec": 6.5,
+          "expected_classes": ["car_bike_accident", "car_person_accident"],
+          "description": "Intersection vehicle-motorcycle impact and rider ejection window"
+        }
+      ]
+    },
+    {
+      "id": "clip_boxtruck_bridge_strike",
+      "video_path": "data/test_videos/expansion/boxtruck_bridge_strike.webm",
+      "camera_id": "CAM-BRIDGE-05",
+      "label": "Clip 5: Commercial Box Truck Low-Clearance Bridge Strike",
+      "clip_type": "accident_scenario",
+      "has_accident": true,
+      "expected_incident_count": 1,
+      "description": "Commercial box truck low-clearance bridge strike; contains initial strike at ~4.4-6.2s followed by slow-motion replay of the same accident.",
+      "ground_truth_events": [
+        {
+          "event_id": "GT-EVENT-V5-01",
+          "start_time_sec": 4.4,
+          "end_time_sec": 6.2,
+          "expected_classes": ["car_object_accident"],
+          "description": "Commercial box truck low-clearance bridge beam impact window"
+        }
+      ]
+    },
+    {
+      "id": "clip_roundabout_contraflow",
+      "video_path": "data/test_videos/expansion/roundabout_contraflow.ogv",
+      "camera_id": "CAM-ROUNDABOUT-06",
+      "label": "Clip 6: Roundabout Contraflow Traffic Management (Accident-Free Control)",
+      "clip_type": "negative_control",
+      "has_accident": false,
+      "expected_incident_count": 0,
+      "description": "Accident-free daytime roundabout traffic management footage with temporary contraflow / roadworks signage; manually verified to contain no collisions.",
+      "ground_truth_events": []
+    }
+  ]
+}

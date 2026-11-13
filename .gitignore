@@ -1,0 +1,38 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+traffic_env/
+
+# AI model and data
+data/models/
+data/snapshots/
+data/test_videos/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Frontend
+node_modules/
+dist/
+frontend/node_modules/
+frontend/dist/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Logs and backups
+*.log
+*.bak
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
